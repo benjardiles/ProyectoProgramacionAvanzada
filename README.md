@@ -1,3 +1,3 @@
 # ProyectoProgramacionAvanzada
-Profesor: Eric Ross
+Profesor: Eric Ross.
 Integrantes: Diego Castro, Renata Cuello, Matias Morales, Benjamin Ardiles.
