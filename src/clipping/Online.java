@@ -155,6 +155,7 @@ public class Online extends javax.swing.JPanel {
     public static ArrayList<Point> cargarPoint(String xmlData) {
     ArrayList<Point> points = new ArrayList<>();
     try {
+        xmlData = fixEntityReferences(xmlData);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(new InputSource(new StringReader(xmlData)));
@@ -176,6 +177,7 @@ public class Online extends javax.swing.JPanel {
 public static ArrayList<Edge> cargarEdge(String xmlData) {
     ArrayList<Edge> edges = new ArrayList<>();
     try {
+        xmlData = fixEntityReferences(xmlData);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(new InputSource(new StringReader(xmlData)));
@@ -197,6 +199,11 @@ public static ArrayList<Edge> cargarEdge(String xmlData) {
     return edges;
 }
 
+private static String fixEntityReferences(String xmlData) {
+    
+    xmlData = xmlData.replaceAll("&([^;])","&amp;$1");
+    return xmlData;
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Local;
