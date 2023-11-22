@@ -24,10 +24,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-/**
- *
- * @author majam
- */
+
 public class Online extends javax.swing.JPanel {
 
     /**
@@ -53,7 +50,7 @@ public class Online extends javax.swing.JPanel {
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new java.awt.FlowLayout());
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -82,15 +79,15 @@ public class Online extends javax.swing.JPanel {
         );
         LocalLayout.setVerticalGroup(
             LocalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LocalLayout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addGroup(LocalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addGroup(LocalLayout.createSequentialGroup()
+                    .addGap(101, 101, 101)
+                    .addGroup(LocalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1))
+                    .addContainerGap(176, Short.MAX_VALUE))
         );
 
-        add(Local, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        add(Local, new java.awt.Rectangle(0, 0, 400, 300));
     }// </editor-fold>//GEN-END:initComponents
     
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

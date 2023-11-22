@@ -4,10 +4,7 @@
  */
 package clipping;
 
-/**
- *
- * @author majam
- */
+
 public class Edge {
     private long u;
     private long v;
