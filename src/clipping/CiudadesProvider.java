@@ -1,6 +1,6 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+// Haz clic en nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt para cambiar esta licencia
+// Haz clic en nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java para editar esta plantilla
  */
 package clipping;
 
@@ -13,33 +13,33 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
  * Esta clase se encarga de listar y descargar archivos de datos NODE y EDGE
  * para ciudades. El origen de los datos es un servidor "en la nube".
- * 
- * Para ver cómo se usa esta clase, busque el "main" que está al final de 
+ *
+ * Para ver cómo se usa esta clase, busque el "main" que está al final de
  * este archivo.
- * 
+ *
  * Nótese: para que esta clase funcione, debe descargar el archivo jar
  * https://search.maven.org/remotecontent?filepath=org/json/json/20231013/json-20231013.jar
- * 
+ *
  * y agregarlo a las "biblotecas referenciadas" en su proyecto.
- * 
+ *
  * @see https://github.com/stleary/JSON-java
  */
-public class CiudadesProvider
-{
-    private CiudadesProvider()
-    {
-
-    }
-
+public final class CiudadesProvider{ 
+    private CiudadesProvider(){
+    } 
     private static CiudadesProvider theInstance = null;
 
+    /**
+     * Obtiene la instancia única de la clase CiudadesProvider.
+     *
+     * @return La instancia única de CiudadesProvider.
+     */
     public static CiudadesProvider instance()
     {
         if (theInstance == null) {
@@ -48,6 +48,13 @@ public class CiudadesProvider
         return theInstance;
     }
 
+    /**
+     * Obtiene el contenido de una URL.
+     *
+     * @param enlace La URL del contenido.
+     * @return El contenido de la URL.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
     private String getURLContents(String enlace) throws IOException
     {
         URL url = new URL(enlace);
@@ -66,6 +73,14 @@ public class CiudadesProvider
         String urlString = content.toString();
         return urlString;
     }
+
+    /**
+     * Obtiene el contenido de una URL comprimido en formato ZIP.
+     *
+     * @param enlace La URL del contenido comprimido.
+     * @return El contenido descomprimido de la URL.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
     private String getURLContentsZIP(String enlace) throws IOException
     {
         System.out.println("Downloading " + enlace);
@@ -84,6 +99,13 @@ public class CiudadesProvider
         return content.toString();
     }
 
+    /**
+     * Obtiene la información de una ciudad por su nombre.
+     *
+     * @param nombre El nombre de la ciudad.
+     * @return Una instancia de la clase Ciudad que contiene los datos de la ciudad.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
     public Ciudad ciudad(String nombre) throws IOException
     {
         URL url = new URL("https://losvilos.ucn.cl/eross/ciudades/get.php?d=" + nombre);
@@ -108,6 +130,12 @@ public class CiudadesProvider
         return new Ciudad(getURLContentsZIP(nodes), getURLContentsZIP(edges));
     }
 
+    /**
+     * Lista las ciudades disponibles.
+     *
+     * @return Una lista de nombres de ciudades disponibles.
+     * @throws IOException Si ocurre un error de entrada/salida.
+     */
     public List<String> list() throws IOException
     {
         URL url = new URL("https://losvilos.ucn.cl/eross/ciudades/list.php");
@@ -134,28 +162,51 @@ public class CiudadesProvider
         return result;
     }
 
+    /**
+     * Clase que representa los datos de una ciudad.
+     */
     public class Ciudad
     {
         private String xmlNodes;
         private String xmlEdges;
-
+        /**
+         * Constructor de la clase Ciudad.
+         *
+         * @param xmlNodes El contenido XML de los nodos.
+         * @param xmlEdges El contenido XML de los bordes.
+         */
         public Ciudad(String xmlNodes, String xmlEdges)
         {
             this.xmlNodes = xmlNodes;
             this.xmlEdges = xmlEdges;
         }
 
+        /**
+         * Obtiene el contenido XML de los nodos.
+         *
+         * @return El contenido XML de los nodos.
+         */
         public String getXmlNodes()
         {
             return xmlNodes;
         }
 
+        /**
+         * Obtiene el contenido XML de los bordes.
+         *
+         * @return El contenido XML de los bordes.
+         */
         public String getXmlEdges()
         {
             return xmlEdges;
         }
     }
-    
+
+    /**
+     * Método principal de prueba.
+     *
+     * @param args Argumentos de la línea de comandos.
+     */
     public static void main(String[] args)
     {
         System.out.println("Testing----------------");
