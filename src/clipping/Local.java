@@ -3,10 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package clipping;
-
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -23,7 +21,7 @@ import org.w3c.dom.NodeList;
 public class Local extends javax.swing.JPanel {
 
     /**
-     * Creates new form Local
+     * Crea una nueva instancia de la clase Local.
      */
     public Local() {
         initComponents();
@@ -95,9 +93,13 @@ public class Local extends javax.swing.JPanel {
         );
 
         add(Local, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    /**
+     * Maneja la acción del botón "Cargar" para cargar datos desde archivos XML locales.
+     * @param evt Evento de acción.
+     */
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // Obtiene los nombres de archivo ingresados en los campos de texto
         String nombreArchivo1 = nodes.getText();
         String nombreArchivo2 = edges.getText();
@@ -126,8 +128,14 @@ public class Local extends javax.swing.JPanel {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Ocurrió un error al buscar los archivos: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         } 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }
 
+    /**
+     * Busca un archivo con el nombre especificado en el directorio local.
+     * @param nombre Nombre del archivo a buscar.
+     * @return El archivo si se encuentra, o lanza una excepción si no se encuentra.
+     * @throws Exception Si el archivo no se encuentra.
+     */
     private File buscarArchivo(String nombre) throws Exception{
        File directorio = new File("C:\\Users\\majam\\OneDrive\\Documentos\\NetBeansProjects\\Clipping"); // Reemplaza con la ruta de tu directorio
         File[] archivos = directorio.listFiles();
@@ -143,6 +151,11 @@ public class Local extends javax.swing.JPanel {
         throw new Exception("El archivo no se encontró."); // Lanza una excepción si el archivo no se encuentra
     }
     
+    /**
+     * Carga datos de puntos desde un archivo XML.
+     * @param filePath Ruta del archivo XML de puntos.
+     * @return Lista de puntos cargados desde el archivo.
+     */
     public static ArrayList<Point> cargarPoint(String filePath) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<ArrayList<Point>> future = executor.submit(new Callable<ArrayList<Point>>() {
@@ -180,6 +193,11 @@ public class Local extends javax.swing.JPanel {
         return new ArrayList<>();
     }
 
+    /**
+     * Carga datos de aristas desde un archivo XML.
+     * @param filePath Ruta del archivo XML de aristas.
+     * @return Lista de aristas cargadas desde el archivo.
+     */
     public static ArrayList<Edge> cargarEdge(String filePath) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Future<ArrayList<Edge>> future = executor.submit(new Callable<ArrayList<Edge>>() {
@@ -220,19 +238,27 @@ public class Local extends javax.swing.JPanel {
         return new ArrayList<>();
     }
     
+    /**
+     * Maneja la acción cuando se ingresa el nombre de archivos de nodos.
+     * @param evt Evento de acción.
+     */
     private void nodesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nodesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nodesActionPerformed
+    }
 
+    /**
+     * Maneja la acción cuando se ingresa el nombre de archivos de aristas.
+     * @param evt Evento de acción.
+     */
     private void edgesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edgesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_edgesActionPerformed
+    }
 
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify
     private javax.swing.JPanel Local;
     private javax.swing.JTextField edges;
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField nodes;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration
 }

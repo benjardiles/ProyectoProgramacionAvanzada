@@ -5,25 +5,42 @@
 package clipping;
 
 import java.awt.BorderLayout;
-import java.io.File;
 
 /**
- *
+ * Main panel class for the application.
+ * 
  * @author majam
  */
 public class Panel extends javax.swing.JFrame {
+    private static final int PANEL_WIDTH = 680;
+    private static final int PANEL_HEIGHT = 420;
 
     /**
-     * Creates new form Panel
+     * Creates new form Panel.
      */
     public Panel() {
         initComponents();
+        initializeLocalContent();
+    }
+
+    /**
+     * Initializes the Local content.
+     */
+    private void initializeLocalContent() {
         Local local = new Local();
-        local.setSize(680,420);
-        local.setLocation(0,0);
-        
+        local.setSize(PANEL_WIDTH, PANEL_HEIGHT);
+        local.setLocation(0, 0);
+        updateContentPanel(local);
+    }
+
+    /**
+     * Updates the content panel with the specified component.
+     *
+     * @param component The component to set in the content panel.
+     */
+    private void updateContentPanel(javax.swing.JComponent component) {
         contenido.removeAll();
-        contenido.add(local, BorderLayout.CENTER);
+        contenido.add(component, BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
     }
@@ -36,7 +53,6 @@ public class Panel extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         LocalBoton = new javax.swing.JButton();
         OnlineBoton = new javax.swing.JButton();
         contenido = new javax.swing.JPanel();
@@ -92,40 +108,32 @@ public class Panel extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
-   
-    private void LocalBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocalBotonActionPerformed
+    private void LocalBotonActionPerformed(java.awt.event.ActionEvent evt) {
         Local local = new Local();
-        local.setSize(680,420);
-        local.setLocation(0,0);
-        
-        contenido.removeAll();
-        contenido.add(local, BorderLayout.CENTER);
-        contenido.revalidate();
-        contenido.repaint();
-    }//GEN-LAST:event_LocalBotonActionPerformed
+        local.setSize(680, 420);
+        local.setLocation(0, 0);
+        updateContentPanel(local);
+    }
 
     private void OnlineBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OnlineBotonActionPerformed
         Online online = new Online();
-        online.setSize(680,420);
-        online.setLocation(0,0);
-        
-        contenido.removeAll();
-        contenido.add(online, BorderLayout.CENTER);
-        contenido.revalidate();
-        contenido.repaint();
-    }//GEN-LAST:event_OnlineBotonActionPerformed
-        
+        online.setSize(680, 420);
+        online.setLocation(0, 0);
+
+        updateContentPanel(online);
+    }
+
     /**
+     * Main method to run the application.
+     *
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Panel().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Panel().setVisible(true);
         });
     }
 
