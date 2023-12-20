@@ -4,31 +4,29 @@
  */
 package clipping;
 
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Color;
-import java.awt.BasicStroke;
-import java.awt.Rectangle;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseWheelEvent;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
 import java.util.HashMap;
+import java.awt.Color;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import java.text.DecimalFormat;
 
-/**
- * La clase Clipping representa un panel JPanel para recortar y visualizar datos
- * geográficos.
- */
-public final class Clipping extends JPanel {
+public class Clipping extends JPanel {
 
     // Lista de puntos y aristas.
     private ArrayList<Point> points;
